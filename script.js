@@ -1,11 +1,13 @@
-//your code here
+let touristSpots = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
 
-let touristSpots=['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
-function strip(bandname){
-	return bandname.replace(/^(a|the|an)/i,'').trim();
-	
-}
-const sortedBands=touristSpots.sort((a,b)=>strip(a)>strip(b)?1:-1);
-document.querySelector('#bands').innerHTML=sortedBands.map(band=>
-	`<li>${band}</li>`).join(``)
-console.log(sortedBands);
+touristSpots.map((element)=>{
+	let words=element.split(" ");	
+	let reducedList=words.reduce((prev,current,index)=>{
+		if(current!="The"&&current!="an"&&current!="a"){
+			return prev+" "+current;
+		}
+		return prev;
+	},"")
+	return reducedList
+})
+console.log(touristSpots)
